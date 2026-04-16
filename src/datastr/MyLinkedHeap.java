@@ -57,7 +57,7 @@ public class MyLinkedHeap<Ttype> {
 				lastNode = newNode;
 				howManyElements++;
 				level++;
-				//TODO reheapUp funkcijas izsaukums
+				reheapUp(newNode);
 				return;
 			}
 			
@@ -71,7 +71,7 @@ public class MyLinkedHeap<Ttype> {
 				newNode.setParentNode(lastNode);
 				lastNode = newNode;
 				howManyElements++;
-				//TODO izsaukt reheapUp funkciju
+				reheapUp(newNode);
 				return;
 			}
 			
@@ -85,7 +85,7 @@ public class MyLinkedHeap<Ttype> {
 				
 				lastNode = newNode;
 				howManyElements++;
-				//TODO izsaukt reheapUp funkciju
+				reheapUp(newNode);
 				return;
 				
 			}
@@ -115,7 +115,7 @@ public class MyLinkedHeap<Ttype> {
 				lastNode = newNode;
 				howManyElements++;
 				level++;
-				//TODO izsaucam reheapUp funciju
+				reheapUp(newNode);
 				return;
 				
 			}
@@ -125,5 +125,28 @@ public class MyLinkedHeap<Ttype> {
 		}
 		
 	}
+	
+	//MAX kaudzes gadījums
+	private void reheapUp(MyNode<Ttype> nodeTemp) {
+		//vai blokam ir vecāks
+		if(nodeTemp.getParentNode()!=null) {
+			MyNode<Ttype> parentTempNode = nodeTemp.getParentNode();
+			//salidzinam, vai bloka vertiba gadījuma nav lielāka par vecak vērtību
+			if(((Comparable)nodeTemp.getElement())
+					.compareTo(parentTempNode.getElement()) > 0) {
+				//mainam vietā vērtības
+				swap(nodeTemp, parentTempNode);
+				reheapUp(parentTempNode);//izsaucam so pašu funkciju rekursīvi, bet jau uz vacaka bloku
+			}
+		}
+	}
+	
+	private void swap(MyNode<Ttype> node1, MyNode<Ttype> node2) {
+		Ttype temp = node1.getElement();
+		node1.setElement(node2.getElement());
+		node2.setElement(temp);
+		
+	}
+	
 	
 }
