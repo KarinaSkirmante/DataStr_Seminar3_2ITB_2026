@@ -15,6 +15,10 @@ public class MainService {
 			integersInHeap.enqueue(55);//P:99 (LC:55, RC:35), P:55 (LC:40, RC:50)
 			integersInHeap.enqueue(2);//P:99 (LC:55, RC:35), P:55 (LC:40, RC:50); ):35 (LC:2)
 			integersInHeap.print();
+			
+			System.out.println("Max vērtība " + integersInHeap.dequeue());
+			integersInHeap.print();
+			//TODO notestēt vēlreiz, bet tad, kad lastNode ir uztaisīts
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
