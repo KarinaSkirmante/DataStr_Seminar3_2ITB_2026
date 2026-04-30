@@ -106,7 +106,14 @@ public class MyLinkedHeap<Ttype> {
 				if (lastNode.getParentNode().getLeftChNode() != null
 						&& lastNode.getParentNode().getRightChNode() != null) {
 
-					MyNode currentParent = findInsertionNode();
+					int numberForNewNode = howManyElements;
+					//otrais -1, jo kartas skaitlis sāks no 1 nevis no 0 ka masīva
+					int numberForNewNodeParent = (numberForNewNode-1 -1)/2;
+					System.out.println("Parent number: " + numberForNewNodeParent);
+					//leftIndex = parentIndex*2 + 1;
+					//((leftIndex -1)/2) = parentIndex
+					//rightIndex = parentIndex*2 +2
+					MyNode currentParent = getLastNodeByNumber(numberForNewNodeParent);
 					currentParent.setLeftChNode(newNode);
 					newNode.setParentNode(currentParent);
 					lastNode = newNode;
@@ -132,25 +139,7 @@ public class MyLinkedHeap<Ttype> {
 
 	}
 
-	private MyNode findInsertionNode() {
-		Queue<MyNode> queue = new LinkedList<>();
-		queue.add(rootNode);
-		while (!queue.isEmpty()) {
-			MyNode currentNode = queue.poll();
-			if (currentNode.getRightChNode() == null) {
-				return currentNode;
-			} else {
-				queue.add(currentNode.getRightChNode());
-			}
-			if (currentNode.getLeftChNode() == null) {
-				return currentNode;
-			} else {
-				queue.add(currentNode.getLeftChNode());
-			}
-
-		}
-		return null;
-	}
+	
 
 	// MAX kaudzes gadījums
 	private void reheapUp(MyNode<Ttype> nodeTemp) {
