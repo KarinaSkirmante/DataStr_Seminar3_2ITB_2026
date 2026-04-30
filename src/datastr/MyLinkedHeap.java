@@ -127,9 +127,7 @@ public class MyLinkedHeap<Ttype> {
 
 			}
 
-			// TODO izveidot pedējo scenāriju, kurs no labā bērna spej pārlekt
-			// uz blakus apkaškoka kreiso bērnu - paņemt piemēru no apraksta
-
+			
 		}
 
 	}
@@ -202,6 +200,32 @@ public class MyLinkedHeap<Ttype> {
 		}
 	}
 
+	private MyNode<Ttype> getLastNodeByNumber(int number) throws Exception{
+		if(number < 1) {
+			throw new Exception("Kārtas skaitlis nevar būt mazāks par 1");
+		}
+		
+		//ja number ir 6, tad binary būs 110
+		String binary = Integer.toBinaryString(number);
+		MyNode<Ttype> currentNode = rootNode;
+		
+		for(int i = 1; i < binary.length(); i++) {
+			if(binary.charAt(i) == '0') {
+				currentNode = currentNode.getLeftChNode();
+			}
+			else
+			{
+				currentNode = currentNode.getRightChNode();
+			}
+		}
+		
+		return currentNode;
+		
+		
+	}
+	
+	
+	
 	// uztaisīt dequeue funkciju
 
 	// veicam visas pārbaudes
