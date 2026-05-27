@@ -106,9 +106,8 @@ public class MyLinkedHeap<Ttype> {
 				if (lastNode.getParentNode().getLeftChNode() != null
 						&& lastNode.getParentNode().getRightChNode() != null) {
 
-					int numberForNewNode = howManyElements;
-					//otrais -1, jo kartas skaitlis sāks no 1 nevis no 0 ka masīva
-					int numberForNewNodeParent = (numberForNewNode-1 -1)/2;
+					int numberForNewNode = howManyElements + 1 ;
+					int numberForNewNodeParent = (numberForNewNode)/2;
 					System.out.println("Parent number: " + numberForNewNodeParent);
 					//leftIndex = parentIndex*2 + 1;
 					//((leftIndex -1)/2) = parentIndex
